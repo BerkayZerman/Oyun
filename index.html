@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yılan Oyunu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="hud">
+      <div class="stat">
+        <span class="stat-label">Skor</span>
+        <strong id="score">0</strong>
+      </div>
+      <div class="stat">
+        <span class="stat-label">En Yüksek</span>
+        <strong id="highScore">0</strong>
+      </div>
+    </header>
+
+    <div class="board-wrap">
+      <canvas id="gameCanvas" width="400" height="400" tabindex="0" aria-label="Yılan oyunu alanı"></canvas>
+      <div id="overlay" class="overlay" hidden>
+        <div class="overlay-card">
+          <h1 id="overlayTitle">Oyun Bitti</h1>
+          <p>Skorun: <strong id="finalScore">0</strong></p>
+          <button id="restartBtn" type="button">Yeniden Başlat</button>
+          <p class="hint">veya Enter / Boşluk tuşuna bas</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="help">Yön: Ok tuşları veya WASD &middot; Bittiğinde Enter ile yeniden başlat</p>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
