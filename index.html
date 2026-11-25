@@ -3,35 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yılan Oyunu</title>
+  <meta name="theme-color" content="#080c0d">
+  <title>Snake Arcade</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="game-shell">
-    <header class="hud">
-      <div class="stat">
-        <span class="stat-label">Skor</span>
-        <strong id="score">0</strong>
-      </div>
-      <div class="stat">
-        <span class="stat-label">En Yüksek</span>
-        <strong id="highScore">0</strong>
-      </div>
+  <main class="cabinet" aria-label="Snake Arcade oyun kabineti">
+    <header class="marquee">
+      <span class="marquee-small">EST. 1984 &middot; INSERT COIN</span>
+      <h1 class="marquee-title">SNAKE</h1>
+      <span class="marquee-sub">ARCADE EDITION</span>
     </header>
 
-    <div class="board-wrap">
-      <canvas id="gameCanvas" width="400" height="400" tabindex="0" aria-label="Yılan oyunu alanı"></canvas>
-      <div id="overlay" class="overlay" hidden>
-        <div class="overlay-card">
-          <h1 id="overlayTitle">Oyun Bitti</h1>
-          <p>Skorun: <strong id="finalScore">0</strong></p>
-          <button id="restartBtn" type="button">Yeniden Başlat</button>
-          <p class="hint">veya Enter / Boşluk tuşuna bas</p>
+    <section class="screen-bezel" aria-label="Oyun ekranı">
+      <div class="screen">
+        <canvas id="gameCanvas" width="400" height="400" tabindex="0" aria-label="Yılan oyunu alanı"></canvas>
+        <div class="scanlines" aria-hidden="true"></div>
+        <div class="screen-glass" aria-hidden="true"></div>
+
+        <div id="overlay" class="overlay" hidden>
+          <div class="overlay-card">
+            <p id="overlayKicker" class="overlay-kicker">GAME OVER</p>
+            <h2 id="overlayTitle">Oyun Bitti</h2>
+            <p class="final-line">Skorun: <strong id="finalScore">0</strong></p>
+            <button id="restartBtn" class="arcade-button restart-button" type="button">Yeniden Başlat</button>
+            <p class="hint">veya Enter / Boşluk tuşuna bas</p>
+          </div>
+        </div>
+
+        <div id="pauseScreen" class="pause-screen" hidden>
+          <div class="pause-card">
+            <span class="pause-bars" aria-hidden="true">II</span>
+            <h2>DURAKLATILDI</h2>
+            <p>Devam etmek için <strong>P</strong> tuşuna bas</p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <p class="help">Yön: Ok tuşları veya WASD &middot; Bittiğinde Enter ile yeniden başlat</p>
+    <section class="control-deck" aria-label="Kontrol paneli">
+      <div class="hud">
+        <div class="stat">
+          <span class="stat-label">Skor</span>
+          <strong id="score">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Durum</span>
+          <strong id="status" class="status-text" data-state="ready" aria-live="polite">HAZIR</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">En Yüksek</span>
+          <strong id="highScore">0</strong>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <div class="system-buttons">
+          <button id="pauseBtn" class="arcade-button small" type="button" aria-pressed="false">II Duraklat</button>
+          <button id="soundBtn" class="arcade-button small" type="button" aria-pressed="true">Ses Açık</button>
+        </div>
+
+        <div class="dpad" aria-label="Yön kontrolü">
+          <button class="dpad-btn up" data-direction="UP" type="button" aria-label="Yukarı">▲</button>
+          <button class="dpad-btn left" data-direction="LEFT" type="button" aria-label="Sola">◀</button>
+          <span class="dpad-hub" aria-hidden="true"></span>
+          <button class="dpad-btn right" data-direction="RIGHT" type="button" aria-label="Sağa">▶</button>
+          <button class="dpad-btn down" data-direction="DOWN" type="button" aria-label="Aşağı">▼</button>
+        </div>
+      </div>
+
+      <p class="help">Ok tuşları / WASD &middot; P ile duraklat &middot; Enter ile yeniden başlat</p>
+    </section>
   </main>
 
   <script src="game.js"></script>
